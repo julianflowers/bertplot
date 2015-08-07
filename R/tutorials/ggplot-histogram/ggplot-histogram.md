@@ -4,20 +4,21 @@ html_document:
 title: "Histogram Basics in ggplot2"
 ---
 
-```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
-library(knitr)
-library(markdown)
-options(width = 60)
-opts_knit$set(upload = TRUE)
-knitr::opts_chunk$set(cache=FALSE,warning=FALSE,fig.align='center',fig.width=8,fig.height=6,comment='')
-```
+
 
 # Basic Syntax
 
-```{r}
+
+```r
 library(ggplot2)
 ggplot(iris,aes(Sepal.Width))+geom_histogram()
 ```
+
+```
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+```
+
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 <a href="#top">Back to top</a>
 
@@ -25,22 +26,39 @@ ggplot(iris,aes(Sepal.Width))+geom_histogram()
 
 ## Add Groups
 
-```{r}
+
+```r
 ggplot(iris,aes(Sepal.Width,fill=Species))+geom_histogram()
 ```
 
+```
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+```
+
+<img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+
 ## Fix Binwidth
 
-```{r}
+
+```r
 ggplot(iris,aes(Sepal.Width,fill=Species))+geom_histogram(binwidth=.10)
 ```
 
+<img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
+
 ## As a Density
 
-```{r}
+
+```r
 ggplot(iris,
        aes(Sepal.Width,fill=Species))+geom_histogram(aes(y=..density..))
 ```
+
+```
+stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+```
+
+<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
 
 <a href="#top">Back to top</a>
  
@@ -48,7 +66,8 @@ ggplot(iris,
 
 ## Add Outlines to Bars
 
-```{r}
+
+```r
 ggplot(iris,aes(Sepal.Width,fill=Species))+
   geom_histogram(binwidth=.1,    # Fixed Bin-width
                  alpha=0.7,      # Make Slightly transparent
@@ -56,9 +75,12 @@ ggplot(iris,aes(Sepal.Width,fill=Species))+
                  size=0.4)       # Thickness of Outline
 ```
 
+<img src="figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+
 ## Modify Axes
 
-```{r}
+
+```r
 ggplot(iris,aes(Sepal.Width,fill=Species))+
   geom_histogram(binwidth=.1,alpha=0.7,color='black',size=0.4) +
   scale_x_continuous('Sepal Width')+          # Add label to x-axis
@@ -71,6 +93,8 @@ ggplot(iris,aes(Sepal.Width,fill=Species))+
         legend.text=element_text(size=14),    # Change legend value text-size
         legend.title=element_text(size=16))   # Change legend title text-size
 ```
+
+<img src="figure/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" />
 
 <a href="#top">Back to top</a>
 
