@@ -1,7 +1,7 @@
 ---
 html_document:
   toc: true
-title: "Histogram Basics in ggplot2"
+title: "Using the facet_grid function in ggplot2"
 ---
 
 ```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
@@ -16,47 +16,62 @@ knitr::opts_chunk$set(cache=FALSE,warning=FALSE,fig.align='center',fig.width=8,f
 
 ```{r}
 library(ggplot2)
-ggplot(iris,aes(Sepal.Width))+geom_histogram()
+
+iris <- iris %>% group_by(Species) %>% mutate(Big.Leaf=ifelse(Petal.Length > mean(Petal.Length),'Big','Small'))
+
+# Theme elements to make plot nicer
+facet_theme <-
+  theme(axis.text.x=element_text(size=12),    # Change x-axis value text-size
+        axis.title.x=element_text(size=14),   # Change x-axis label text-size
+        axis.text.y=element_text(size=12),    # Change y-axis value text-size
+        axis.title.y=element_text(size=14),   # Change y-axis label text-size
+        strip.text.x=element_text(size=14),
+        strip.text.y=element_text(size=14))
+
+curPlot <- ggplot(iris,aes(Sepal.Width,Sepal.Length))+geom_point(size=3)+facet_theme
+
+# As Columns
+curPlot+facet_grid(.~Species)
+# As Rows
+curPlot+facet_grid(Species~.)
 ```
 
 <a href="#top">Back to top</a>
 
-# Additional Features
-
-## Add Groups
-
+# To Change plot order, re-order factor
 ```{r}
-ggplot(iris,aes(Sepal.Width,fill=Species))+geom_histogram()
+iris$Species <- factor(iris$Species,levels=c('virginica','setosa','versicolor'))
+# Remake plot with new level order
+curPlot <- ggplot(iris,aes(Sepal.Width,Sepal.Length))+geom_point(size=2)+facet_theme
+curPlot+facet_grid(Species~.)
 ```
 
-## Fix Binwidth
+# Panel By 2 Features
 
 ```{r}
-ggplot(iris,aes(Sepal.Width,fill=Species))+geom_histogram(binwidth=.10)
+curPlot+facet_grid(Species~Big.Leaf)
+curPlot+facet_grid(Big.Leaf~Species)
 ```
 
-## As a Density
+## 
 
 ```{r}
-ggplot(iris,
-       aes(Sepal.Width,fill=Species))+geom_histogram(aes(y=..density..))
+curPlot+facet_grid(Species+Big.Leaf~.)
+curPlot+facet_grid(.~Big.Leaf+Species)
 ```
 
-<a href="#top">Back to top</a>
- 
-# Aesthetics
-
-## Add Outlines to Bars
-
+# Add Margins
 ```{r}
-ggplot(iris,aes(Sepal.Width,fill=Species))+
-  geom_histogram(binwidth=.1,    # Fixed Bin-width
-                 alpha=0.7,      # Make Slightly transparent
-                 color='black',  # Add Outline
-                 size=0.4)       # Thickness of Outline
+curPlot+facet_grid(Big.Leaf~Species,margins=TRUE)
 ```
 
-## Modify Axes
+# Axis Control
+```{r}
+curPlot+facet_grid(Species~.,scales='free')
+curPlot+facet_grid(Species~Big.Leaf,scales='free',space='free')
+```
+
+
 
 ```{r}
 ggplot(iris,aes(Sepal.Width,fill=Species))+
@@ -77,4 +92,5 @@ ggplot(iris,aes(Sepal.Width,fill=Species))+
 # More Resources
 - [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-histogram/ggplot-histogram.Rmd)
 - [docs.ggplot2.org](http://docs.ggplot2.org/0.9.3/geom_histogram.html)
+
 
