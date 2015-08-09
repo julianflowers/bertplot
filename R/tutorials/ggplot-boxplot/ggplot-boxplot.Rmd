@@ -5,11 +5,7 @@ title: "Boxplot Basics in ggplot2"
 ---
 
 ```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
-library(knitr)
-library(markdown)
-options(width = 60)
-opts_knit$set(upload = TRUE)
-knitr::opts_chunk$set(cache=FALSE,warning=FALSE,fig.align='center',fig.width=8,fig.height=6,comment='')
+source('../../source/common_rmd_options.R')
 ```
 
 # Basic Syntax

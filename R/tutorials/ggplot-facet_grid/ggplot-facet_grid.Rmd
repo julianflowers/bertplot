@@ -1,21 +1,19 @@
 ---
 html_document:
   toc: true
-title: "Using the facet_grid function in ggplot2"
+title: "Using the facet_grid() function in ggplot2"
 ---
 
 ```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
-library(knitr)
-library(markdown)
-options(width = 60)
-opts_knit$set(upload = TRUE)
-knitr::opts_chunk$set(cache=FALSE,warning=FALSE,fig.align='center',fig.width=8,fig.height=6,comment='')
+source('../../source/common_rmd_options.R')
 ```
 
 # Basic Syntax
+The first few lines help set everything up.  We create a new variable on the `iris` dataset so that we can make some more interesting plots.  Second, we create a theme for our plots so that the labels and titles are readable.
 
 ```{r}
 library(ggplot2)
+library(dplyr)
 
 iris <- iris %>% group_by(Species) %>% mutate(Big.Leaf=ifelse(Petal.Length > mean(Petal.Length),'Big','Small'))
 
@@ -38,7 +36,8 @@ curPlot+facet_grid(Species~.)
 
 <a href="#top">Back to top</a>
 
-# To Change plot order, re-order factor
+# Re-ordering the panels
+Simply re-order factor levels to change the order in which they're displayed
 ```{r}
 iris$Species <- factor(iris$Species,levels=c('virginica','setosa','versicolor'))
 # Remake plot with new level order
@@ -60,37 +59,34 @@ curPlot+facet_grid(Species+Big.Leaf~.)
 curPlot+facet_grid(.~Big.Leaf+Species)
 ```
 
-# Add Margins
+# Add Marginal Panels
+
+## Single Dimension Margins
+
+```{r}
+curPlot+facet_grid(Big.Leaf~Species,margins='Big.Leaf')
+```
+
+## Include All Margins
+
 ```{r}
 curPlot+facet_grid(Big.Leaf~Species,margins=TRUE)
 ```
 
+
 # Axis Control
+
+Normally, axes have a fixed range common to all panels and all panels are the same dimensions.  We can allow the limits and the dimensions of the axes to vary freely.
+
 ```{r}
 curPlot+facet_grid(Species~.,scales='free')
 curPlot+facet_grid(Species~Big.Leaf,scales='free',space='free')
-```
-
-
-
-```{r}
-ggplot(iris,aes(Sepal.Width,fill=Species))+
-  geom_histogram(binwidth=.1,alpha=0.7,color='black',size=0.4) +
-  scale_x_continuous('Sepal Width')+          # Add label to x-axis
-  scale_y_continuous('Count')+                # Add label to y-axis
-  scale_fill_discrete('Iris Species')+        # Add label to legend
-  theme(axis.text.x=element_text(size=14),    # Change x-axis value text-size
-        axis.title.x=element_text(size=18),   # Change x-axis label text-size
-        axis.text.y=element_text(size=14),    # Change y-axis value text-size
-        axis.title.y=element_text(size=18),   # Change y-axis label text-size
-        legend.text=element_text(size=14),    # Change legend value text-size
-        legend.title=element_text(size=16))   # Change legend title text-size
 ```
 
 <a href="#top">Back to top</a>
 
 # More Resources
 - [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-histogram/ggplot-histogram.Rmd)
-- [docs.ggplot2.org](http://docs.ggplot2.org/0.9.3/geom_histogram.html)
+- [docs.ggplot2.org](http://docs.ggplot2.org/0.9.3.1/facet_grid.html)
 
 

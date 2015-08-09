@@ -4,23 +4,22 @@
 title: "Boxplot Basics in ggplot2"
 ---
 
-  ```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
-library(knitr)
-library(markdown)
-options(width = 60)
-opts_knit$set(upload = TRUE)
-knitr::opts_chunk$set(cache=FALSE,warning=FALSE,fig.align='center',fig.width=8,fig.height=6,comment='')
+```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
+source('../../source/common_rmd_options.R')
 ```
 
 # Basic Syntax
 
 ```{r}
 library(ggplot2)
-ggplot(airquality,aes(Month,Day,fill=Temp))+geom_tile()
+library(hflights)
+head(hflights)
+hflights.agg <- hflights %>% group_by(Month,DayofMonth) %>% summarize(mean.time=mean(DepDelay,na.rm=TRUE))
+ggplot(hflights.agg,aes(Month,DayofMonth,fill=mean.time))+geom_tile()
 ```
 
 <a href="#top">Back to top</a>
 
-  # More Resources
-  - [Source as RMarkdown]((https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-boxplot/ggplot-boxplot.Rmd))
-- [docs.ggplot2.org](http://docs.ggplot2.org/0.9.3/geom_boxplot.html)
+# More Resources
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/tree/master/R/tutorials/ggplot-heatmap/ggplot-heatmap.Rmd)
+- [docs.ggplot2.org](http://docs.ggplot2.org/current/geom_tile.html)
