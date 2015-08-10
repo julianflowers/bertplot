@@ -99,6 +99,6 @@ ggplot(iris,aes(Sepal.Width,fill=Species))+
 <a href="#top">Back to top</a>
 
 # More Resources
-- [Source as RMarkdown]((https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-histogram/ggplot-histogram.Rmd))
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-histogram/ggplot-histogram.Rmd)
 - [docs.ggplot2.org](http://docs.ggplot2.org/0.9.3/geom_histogram.html)
 

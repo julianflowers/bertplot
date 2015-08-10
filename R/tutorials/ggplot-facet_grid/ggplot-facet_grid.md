@@ -4,14 +4,13 @@ html_document:
 title: "Using the facet_grid() function in ggplot2"
 ---
 
-```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
-source('../../source/common_rmd_options.R')
-```
+
 
 # Basic Syntax abc
 The first few lines help set everything up.  We create a new variable on the `iris` dataset so that we can make some more interesting plots.  Second, we create a theme for our plots so that the labels and titles are readable.
 
-```{r}
+
+```r
 library(ggplot2)
 library(dplyr)
 
@@ -30,58 +29,98 @@ curPlot <- ggplot(iris,aes(Sepal.Width,Sepal.Length))+geom_point(size=3)+facet_t
 
 # As Columns
 curPlot+facet_grid(.~Species)
+```
+
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
+
+```r
 # As Rows
 curPlot+facet_grid(Species~.)
 ```
+
+<img src="figure/unnamed-chunk-1-2.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 <a href="#top">Back to top</a>
 
 # Re-ordering the panels
 Simply re-order factor levels to change the order in which they're displayed
-```{r}
+
+```r
 iris$Species <- factor(iris$Species,levels=c('virginica','setosa','versicolor'))
 # Remake plot with new level order
 curPlot <- ggplot(iris,aes(Sepal.Width,Sepal.Length))+geom_point(size=2)+facet_theme
 curPlot+facet_grid(Species~.)
 ```
 
+<img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+
 # Panel By 2 Features
 
-```{r}
+
+```r
 curPlot+facet_grid(Species~Big.Leaf)
+```
+
+<img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
+
+```r
 curPlot+facet_grid(Big.Leaf~Species)
 ```
 
+<img src="figure/unnamed-chunk-3-2.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
+
 ## 
 
-```{r}
+
+```r
 curPlot+facet_grid(Species+Big.Leaf~.)
+```
+
+<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
+
+```r
 curPlot+facet_grid(.~Big.Leaf+Species)
 ```
+
+<img src="figure/unnamed-chunk-4-2.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
 
 # Add Marginal Panels
 
 ## Single Dimension Margins
 
-```{r}
+
+```r
 curPlot+facet_grid(Big.Leaf~Species,margins='Big.Leaf')
 ```
 
+<img src="figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+
 ## Include All Margins
 
-```{r}
+
+```r
 curPlot+facet_grid(Big.Leaf~Species,margins=TRUE)
 ```
+
+<img src="figure/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" />
 
 
 # Axis Control
 
 Normally, axes have a fixed range common to all panels and all panels are the same dimensions.  We can allow the limits and the dimensions of the axes to vary freely.
 
-```{r}
+
+```r
 curPlot+facet_grid(Species~.,scales='free')
+```
+
+<img src="figure/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
+
+```r
 curPlot+facet_grid(Species~Big.Leaf,scales='free',space='free')
 ```
+
+<img src="figure/unnamed-chunk-7-2.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
 
 <a href="#top">Back to top</a>
 
