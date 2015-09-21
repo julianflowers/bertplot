@@ -68,5 +68,5 @@ ggplot(mtcars,aes(factor(vs),mpg,fill=factor(am)))+
 <a href="#top">Back to top</a>
 
 # More Resources
-- [Source as RMarkdown]((https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-boxplot/ggplot-boxplot.Rmd))
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-boxplot/ggplot-boxplot.Rmd)
 - [docs.ggplot2.org](http://docs.ggplot2.org/0.9.3/geom_boxplot.html)

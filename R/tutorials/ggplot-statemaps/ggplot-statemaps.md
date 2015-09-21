@@ -4,13 +4,12 @@ html_document:
   toc: true
 ---
 
-```{r setup, echo=FALSE, warning=FALSE,cache=FALSE}
-source('../../source/common_rmd_options.R')
-```
+
 
 # Basic Syntax
 
-```{r}
+
+```r
 # Load Census Data
 census_data_url <- 'http://www.bertplot.com/visualization/wp-content/uploads/2015/08/ACS_13_1YR_DP02_with_ann.csv'
 census_data <- read.csv(census_data_url)
@@ -35,13 +34,18 @@ map <-
 map
 ```
 
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
+
 <a href="#top">Back to top</a>
 
 # Change Coordinate Projection
 Requires installation of <b>{mapproj}</b> package
-```{r}
+
+```r
 map+coord_map(project='conic',lat0=30)
 ```
+
+<img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
 
 <a href="#top">Back to top</a>
 
@@ -49,7 +53,8 @@ map+coord_map(project='conic',lat0=30)
 
 Here we remove axes text and make legend text larger.  We also remove the background so the only elements visible are the map and the legend
 
-```{r}
+
+```r
 library(grid)
 
 # Purely aesthetic changes
@@ -75,8 +80,9 @@ map <-
   scale_fill_gradient('% Born in US')+  # Change Legend Label
   map_theme
 map  
-
 ```
+
+<img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
 
 # More Resources
 - [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/ggplot-statemaps/ggplot-statemaps.Rmd)

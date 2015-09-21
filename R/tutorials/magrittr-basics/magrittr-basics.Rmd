@@ -158,6 +158,7 @@ df
 <a href="#top">Back to top</a>
 
 # More Resources
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/magrittr-basics/magrittr-basics.Rmd)
 - [magrittr on GitHub](https://github.com/smbache/magrittr)
 - [dplyr and pipes: the basics](http://seananderson.ca/2014/09/13/dplyr-intro.html)
 - [pipeR vs. magrittr](http://renkun.me/blog/2014/08/08/difference-between-magrittr-and-pipeR.html)

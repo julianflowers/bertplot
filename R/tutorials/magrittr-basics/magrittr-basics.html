@@ -201,72 +201,14 @@ hr {
 </head>
 
 <body>
-<div id="toc">
-<div id="toc_header">Table of Contents</div>
-<ul>
-<li>
-<a href="#toc_0">The Problem</a>
-<ul>
-<li>
-<ul>
-<li>
-<a href="#toc_1">R code can get hard to read</a>
-</li>
-<li>
-<a href="#toc_2">A (Possible) Solution - the pipe %&gt;% {.build}</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_3">What %&gt;% is doing</a>
-<ul>
-<li>
-<ul>
-<li>
-<a href="#toc_4">Basic Example</a>
-</li>
-<li>
-<a href="#toc_5">Slightly more complicated example</a>
-</li>
-<li>
-<a href="#toc_6">Even more complicated example</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_7">The combination of %&gt;% with {dplyr}</a>
-</li>
-<li>
-<a href="#toc_8">%$% The exposition operator</a>
-</li>
-<li>
-<a href="#toc_9">%T&gt;% The Tee Operator</a>
-</li>
-<li>
-<a href="#toc_10">%&lt;&gt;% The Compound Assignment Operator</a>
-</li>
-<li>
-<a href="#toc_11">%&lt;&gt;% The Compound Assignment Operator</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_12">More Resources</a>
-</li>
-</ul>
-</div>
+<h1>The Problem</h1>
 
-
-<h1 id="toc_0">The Problem</h1>
-
-<h3 id="toc_1">R code can get hard to read</h3>
+<h3>R code can get hard to read</h3>
 
 <pre><code class="r">sapply(iris[iris$Sepal.Length &lt; mean(iris$Sepal.Length),-5],FUN = mean)
 </code></pre>
 
-<h3 id="toc_2">A (Possible) Solution - the pipe %&gt;% {.build}</h3>
+<h3>A (Possible) Solution - the pipe %&gt;% {.build}</h3>
 
 <ul>
 <li>Similar to Unix pipe |</li>
@@ -291,30 +233,30 @@ hr {
 
 <p><a href="#top">Back to top</a></p>
 
-<h1 id="toc_3">What %&gt;% is doing</h1>
+<h1>What %&gt;% is doing</h1>
 
 <p>The <code>%&gt;%</code> is taking the output of the left-hand side and using that for<br/>
 the first argument of the right-hand side, or where it finds a <em><code>.</code></em></p>
 
-<h3 id="toc_4">Basic Example</h3>
+<h3>Basic Example</h3>
 
 <pre><code class="r">df &lt;- data.frame(x1=rnorm(100),x2=rnorm(100),x3=rnorm(100))
 
 df %&gt;% head(1)  # same as using head(df,1)
 </code></pre>
 
-<pre><code>##          x1        x2          x3
-## 1 0.8421295 0.1814191 -0.06159804
+<pre><code>##           x1         x2      x3
+## 1 0.06294249 -0.1570624 2.21768
 </code></pre>
 
 <pre><code class="r">df %&gt;% head(.,1)  # same as using head(df,1)
 </code></pre>
 
-<pre><code>##          x1        x2          x3
-## 1 0.8421295 0.1814191 -0.06159804
+<pre><code>##           x1         x2      x3
+## 1 0.06294249 -0.1570624 2.21768
 </code></pre>
 
-<h3 id="toc_5">Slightly more complicated example</h3>
+<h3>Slightly more complicated example</h3>
 
 <pre><code class="r">library(ggplot2)
 mtcars %&gt;%
@@ -326,7 +268,7 @@ mtcars %&gt;%
 
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoCAMAAABNO5HnAAACmlBMVEUAAAACAgIDAwMFBQUGBgYHBwcICAgKCgoLCwsNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUXFxcYGBgZGRkaGhobGxsdHR0fHx8gICAhISEjIyMmJiYnJycoKCgpKSkrKystLS0vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFDQ0NERERFRUVGRkZHR0dJSUlKSkpMTExNTU1OTk5PT09QUFBRUVFSUlJTU1NVVVVWVlZXV1dYWFhbW1tdXV1eXl5fX19gYGBiYmJjY2NlZWVmZmZnZ2dqampra2tsbGxtbW1ubm5wcHB0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKDg4OEhISGhoaHh4eIiIiKioqLi4uMjIyOjo6Pj4+QkJCTk5OUlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/h4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7///9JlWMMAAAACXBIWXMAAAsSAAALEgHS3X78AAALvklEQVR4nO3d+38UVxnH8VHBSKkgteoqRls0Lai03FqkabHSlqKNSqtReqHWSwWbKpcq5NKEJBQwVa6SttwKjeUSYgBJm0hJSkwCIRdICElIsnv+FzeHJGTPzpOdM/uc2enm+/khmx84z2v3zTK7M7szWAJ5kpXoOzBeArRHAdqjAO1RgPYoQHsUoD0K0B4FaI8CtEcB2qMA7VGA9ign0N3tevV2aC6IUVcX77yrvborPILubNSrv0VzQYw6u3jnNQd1VwDaVYAmAjQRoAEtAzQRoIkADWgZoIkATQRoQMsATQRoIkADWgZoIkATARrQMkATAZoI0ICWAZoI0ESABrQM0ESAJgI0oGW+gh74e+7rw9+EArRB6A93iDN7khTasizNFQaha7cFT+wL39ZVVVVd0PxKoNWp+yXCGPMs5nG6Ay8bhA7mrvtjR/j2rcLCwopevSxLc4G38wah9VZcNQhddih0oXDod2w6DELvOy5aNiQptK9eDLuKc7MvAHoog9CjAzSgXQVoIkATARrQMkATAZoI0ICWAZoI0ESABrQM0ESAJgI0oGWAJgI0EaABLQM0EaCJAA1oGaCJAE0EaEDLAE0EaCJAA1oGaCJAEwEa0DJAEwGaCNCAlgGaCNBEgAa0DNBEgCYCNKBlgCYCNBGgAS0DNFFyQ79fkIMLowxnELqpIFS9E9BDGYQ+Ui5C15MU2leXkSjdWVh0MXx7qKSk5FS3XpalucDbeYMXRtFbccUg9IHdwf9lh29rKioq6q7oZVmaC7ydNwitt6LFIPR/3xatG4d+x6bDIHSoNDe7PkmhffViODpAA9pVgCYCNBGgAS0DNBGgiQANaBmgiQBNBGhAywBNBGgiQANaBmgiv0HvGfzo4ClAxyx+6Lc/+ugSoGMWP3R1+Gduyi9XNj80ae659vTbnrSOATq6+KE/M3FiRa71XHXmjOZls1ZOO/4MoO2KH3pvdXV37sQBMf/21MAX0x8VJwFtF9Om43NCLJ/TVvD7F6adyAS0XXzQjQsmLShrXTTpCUDbxf8++mNA2wVoIv9DOwjQTgK0q+KFDg5EFgS0ffFC93RG1gNo+wBNBGgiQANaZgA69MyC9GZAKxmAPvi4eP15QCsZgH55jfhgDqCVuKCtW9CZ/xBd3wS0kgHo34af0fcBWsnApuPAk6IQ22g1A9DBzPTFY58kB2gnxYSOHaCdBGhXJQu0/ompMQK0XdbNdB/K2CM5pyUJtDWS7oOJMZFrXKPvPmHpWeMC2mKH5v57a4wfuvdaZHE+o0tXxwfNQ8P/L8Rvm46GHev1oa1PBHS8l5FghQ4WdknozVlZWUeCTouAdrzK2USWccMj9VZcMwh9rEJI6M729vaWS06LgHa8ytlElnHDI/VWXDQIvb2oePXmod+TbRutP8sB9Ko33UGHc7GN5n/X4eMXw/B9GoEemPtp99AjJfR9NL+zCehQ/0qPoQ3AMDNzQctHeWvT8WuvoRu5n3++PdYx+hmdCOhxevQO0NEBmugTAR0rQDsJ0K4CNFEyQg9Uv3s+BGi1SI+Qmj70mW9MTZt6by2glSI9+pTLS/fpQ898vk/0rZgHaKVID4ZNx6TBb9tcvg3QSuzQT+SGf2T/ENBKzNDLli2x0h5L+9RyQCsxQxcPB2glW+jRB5V6MxZ8+4RjaCHurrL7M4C2g444TLr7F6LiuxrQqzJ6AW2TDfTQYfch6Moa8fH3NKDnTZ4wPTU1FdBKMaGFKE8r1YA+ezNAK8WEDr045/SYzrbHOooArWQDHbmN/tvS/rGdFejq5UuXLl18B6CV7KAjThb6aWDGjIc1oGdmrEgvnvVPQCvZQ8exZzixtetBcel+QCuxQwfeE/e0d08BtBI7dPaECy+lzf0+oJXYoUV9T/8b6zsArRTpEeyPzMWlfnrzjojitTcArRTpMdAX2YA+9NP3nBZHZ/4E0EqRHgybjimDn2LVTga0Ejv09OPhH0enA1qJHXrb1Mw//2oqdsHV2KFFzaqnf3dG/TOAtoOOONZx7ZG5s+t0oG0DtA105NG7v/5B5GcCWokDeuTEhpvQVY1i00uAVjIALcSSz6vfOwK0AeiOfnFIPXIBaAPb6GfzxdH5gFYyAN30wOxZ/wa0kpGzsmIFaCfZQce3wwJo2/wJPV7OM+SBvrElP6/dDTT/GcW+g76hfBFdPX6vBV1+WFQOf/Umwaco+w46pFzOw8WpFbdq7hSnDoZvG2traxtaNRqG1lkTcyTjsHBXdOcpl+Bm3kZvyxrcdOzKzs4+3ue8kT0mjTWxZzIOczNP+RCVFbo3KOqGj0tj02EQel+lqC+IA1r3oYyVP6GZdlg6C/NymtxAN44P6Kijd26hI9A175Y1DnZYoqCvfsV76HGwZ2hZo6QldGYKoNVMQJdnpAJazQB0/4PNgI7KAPTaHAHoqAy8GP5o4aKUhwCtZObtXerYiIB2UjQ0PmFxkK92wQE9OkC7CtBEfoN2FaCdFOlx43pkcX2UBejRRXpg0+EwvL0j8iO0L45HjwPo6MOkgI7OAHTv5BkzXgW0UvzQ1ugGoT/8cSxEQDspJvSuWT94vB7QSgagj5aIrYsBrWQAOlz31wCtZODFMOsv4tAjgFYyAN326JyF5wGthB0WIj9CR11gENDRGfmfhQAdHY7eEfkNmuFSP4C2z4kkoKMCNBGgiQANaBmgiQBNBGhAywBNBGgiQANaBmgiQNt28zit7kPxbl6yQA9/8qD7WLya1+gz6P4dmzY2uIC2mGEs7oGuLkVkELpmr2jMjQeaCcYQtOY0g9BNLeJKXvj25P79+6uvOW7Up8POFzkbyDNvZKLOkjaD0EI0bDwX/nmmrKzsXIfjRkE7X+RsIM+8kYk6S1oNQocO5F8c/h2bDoPQVW/e+t9F8GJoEHrX2g0b3nABjbd3mtCjww6LL6GxCw7ooQBNBGgiQANaBmgiQBMBGtAyQBMBmgjQgJYBmgjQRIAGtAzQRIAmAjSgZYAmAjQRoAEtAzQRoIkADWgZoIkATQRoQMsATQRoIkADWgZoIkATARrQMkATAZoI0ICWAZoI0ESABrQM0ESAJuKG5j3LMImgLVbopD+h88gH7qBNnCKfxKcoB/Nfdgdt6FRwTmlfQYeCB+KC9vHVDfwFLcRBCV2ybt269wecN+KiscbRPK6Bcqbmgk4PoAdf1y5e1mjYRWeNg3FsA8O16c665AH0YNh0+Bha96HEGJfM0LfSfB9t4rooyfv2Lg5o7j1D7v0VQFPhWAcRoAEtAzQRoIkADWgZoIkATQRoQMsATQRoIkADWgZoIkATARrQMkATAZoI0ICWAZoI0ESABrQM0ESAJgI0oGVJA33wvO4DGbvKk7zz6t7RXeERtG6v1fPOe/ct3nktf+Kd5yhAexSgPcoE9M7LvPNOl/PO6yjhnecoE9DIJkB7FKA9ih/6xpb8vHbekT1rOKf1v7Jhw784BzqKH7r8sKgs5R1Zuppz2uXtnNOcxg/d3ClOHWSd2LBjPee4mpytJVc5BzrKxDZ6WxbrpiNY2MUKXV8lzm7hHOgofujeoKgr4hx4rEKwQofrW8c8MHb80PsqRX0B58DtRcWrNzPOKysXdcnwjO4szMtpYp7J+ozu3ppf1MY50FF4H+1RgPYoQHsUoD0K0B7lX+iCQGBTQIj3vpWyqEGInK9+9js14uy8VXcn+n65zLfQ//nCicb7A6J16u72n88X9ROOtGQsF2cnZ1Ql+o65zLfQLz4rxK6A2PSYED0pAz0XRNeKpeLshN5E3y+3+Rb6qdeEOBUQqyYFAoHbm/p/c+8D6WHo6Ym+W67zLfQLzwmxOyDylggxcDK0Ja1NFIehUxN9t1znW+iKaSeb5gXExWl7W1bcJ9bP7W6etRjQJtp459c33iXEO3elLKgVVxdOmb3njiJA81d9OIw8P9H3gi/fQh+9s7n74VcTfS/48i20eOVLX/7Z9UTfCb78C51kAdqjAO1RgPYoQHsUoD0K0B4FaI/6P9tI3Ok7Qt4lAAAAAElFTkSuQmCC" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" /></p>
 
-<h3 id="toc_6">Even more complicated example</h3>
+<h3>Even more complicated example</h3>
 
 <pre><code class="r"># Generate some sample data.
 df &lt;-
@@ -344,7 +286,7 @@ df &lt;-
 
 <p><a href="#top">Back to top</a></p>
 
-<h2 id="toc_7">The combination of %&gt;% with {dplyr}</h2>
+<h2>The combination of %&gt;% with {dplyr}</h2>
 
 <ul>
 <li><code>filter()</code></li>
@@ -375,7 +317,7 @@ df &lt;-
 
 <p><a href="#top">Back to top</a></p>
 
-<h2 id="toc_8">%$% The exposition operator</h2>
+<h2>%$% The exposition operator</h2>
 
 <ul>
 <li>Similar to <code>with()</code> or <code>attach()</code></li>
@@ -403,7 +345,7 @@ CO2 %$% table(Treatment,Type)
 
 <p><a href="#top">Back to top</a></p>
 
-<h2 id="toc_9">%T&gt;% The Tee Operator</h2>
+<h2>%T&gt;% The Tee Operator</h2>
 
 <ul>
 <li>Allows a &quot;break&quot; in the pipe.</li>
@@ -425,7 +367,7 @@ colMeans
 
 <p><a href="#top">Back to top</a></p>
 
-<h2 id="toc_10">%&lt;&gt;% The Compound Assignment Operator</h2>
+<h2>%&lt;&gt;% The Compound Assignment Operator</h2>
 
 <ul>
 <li>Combines a pipe and an assignment operator</li>
@@ -434,18 +376,18 @@ colMeans
 
 <p><a href="#top">Back to top</a></p>
 
-<h2 id="toc_11">%&lt;&gt;% The Compound Assignment Operator</h2>
+<h2>%&lt;&gt;% The Compound Assignment Operator</h2>
 
 <pre><code class="r">df &lt;- rexp(5,.5) %&gt;% data.frame(col1=.)
 df
 </code></pre>
 
 <pre><code>##        col1
-## 1 0.2871829
-## 2 3.4628332
-## 3 0.5716582
-## 4 1.8430468
-## 5 1.9281341
+## 1 0.5922743
+## 2 1.3762161
+## 3 4.3349630
+## 4 1.5131369
+## 5 4.1046156
 </code></pre>
 
 <pre><code class="r">df %&lt;&gt;% arrange(col1)
@@ -453,18 +395,19 @@ df
 </code></pre>
 
 <pre><code>##        col1
-## 1 0.2871829
-## 2 0.5716582
-## 3 1.8430468
-## 4 1.9281341
-## 5 3.4628332
+## 1 0.5922743
+## 2 1.3762161
+## 3 1.5131369
+## 4 4.1046156
+## 5 4.3349630
 </code></pre>
 
 <p><a href="#top">Back to top</a></p>
 
-<h1 id="toc_12">More Resources</h1>
+<h1>More Resources</h1>
 
 <ul>
+<li><a href="https://github.com/rweyant/bertplot/blob/master/R/tutorials/magrittr-basics/magrittr-basics.Rmd">Source as RMarkdown</a></li>
 <li><a href="https://github.com/smbache/magrittr">magrittr on GitHub</a></li>
 <li><a href="http://seananderson.ca/2014/09/13/dplyr-intro.html">dplyr and pipes: the basics</a></li>
 <li><a href="http://renkun.me/blog/2014/08/08/difference-between-magrittr-and-pipeR.html">pipeR vs. magrittr</a></li>

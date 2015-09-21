@@ -49,8 +49,8 @@ df %>% head(1)  # same as using head(df,1)
 ```
 
 ```
-##          x1        x2          x3
-## 1 0.8421295 0.1814191 -0.06159804
+##           x1         x2      x3
+## 1 0.06294249 -0.1570624 2.21768
 ```
 
 ```r
@@ -58,8 +58,8 @@ df %>% head(.,1)  # same as using head(df,1)
 ```
 
 ```
-##          x1        x2          x3
-## 1 0.8421295 0.1814191 -0.06159804
+##           x1         x2      x3
+## 1 0.06294249 -0.1570624 2.21768
 ```
 
 ### Slightly more complicated example
@@ -208,11 +208,11 @@ df
 
 ```
 ##        col1
-## 1 0.2871829
-## 2 3.4628332
-## 3 0.5716582
-## 4 1.8430468
-## 5 1.9281341
+## 1 0.5922743
+## 2 1.3762161
+## 3 4.3349630
+## 4 1.5131369
+## 5 4.1046156
 ```
 
 ```r
@@ -222,16 +222,17 @@ df
 
 ```
 ##        col1
-## 1 0.2871829
-## 2 0.5716582
-## 3 1.8430468
-## 4 1.9281341
-## 5 3.4628332
+## 1 0.5922743
+## 2 1.3762161
+## 3 1.5131369
+## 4 4.1046156
+## 5 4.3349630
 ```
 
 <a href="#top">Back to top</a>
 
 # More Resources
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/magrittr-basics/magrittr-basics.Rmd)
 - [magrittr on GitHub](https://github.com/smbache/magrittr)
 - [dplyr and pipes: the basics](http://seananderson.ca/2014/09/13/dplyr-intro.html)
 - [pipeR vs. magrittr](http://renkun.me/blog/2014/08/08/difference-between-magrittr-and-pipeR.html)
