@@ -4,22 +4,22 @@ html_document:
     toc: true
 ---
 
-```{r setup, echo=FALSE, warning=FALSE,cache=FALSE,results='hide'}
-source('/media/roberto/Main Storage/Documents/bertplot/R/source/common_rmd_options.R')
-```
+
 
 QPX Express API offers global airline pricing in a single, standard API.  You can search it and get data on flight prices across lots of different carriers.
 
 ## Installation
 <br>
-```{r, eval=FALSE,results='hide'}
+
+```r
 devtools::install_github('rweyant/googleflights')
 ```
 
 ## Basic Usage
 <br>
 First, you need to get an [API Key](https://developers.google.com/qpx-express/).
-```{r, eval=FALSE}
+
+```r
 library(googleflights)
 
 # Set API key in a place all the functions have access to
@@ -28,7 +28,8 @@ set_apikey(YOUR_APIKEY)
 <br>
 ## Get data
 <br>
-```{r,eval=FALSE}
+
+```r
 result <- search(origin='DTW',dest='SFO',startDate='2016-03-01',endDate='2016-03-08')
 ```
 <br>
@@ -46,9 +47,4 @@ I'm working on adding functions that will make working with the returned data ea
 - [QPX Express API Documentation](https://developers.google.com/qpx-express/v1/)
 
 
-```{r, echo=FALSE,fig.height=1,fig.width=2,fig.align='left'}
-suppressWarnings(suppressPackageStartupMessages(library(png)))
-suppressPackageStartupMessages(library(grid))
-img <- readPNG('googleflights.png')
-grid.raster(img)
-```
+<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto auto auto 0;" />

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Installation</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p><strong>gspread</strong> offers a simple interface between Python and Googl Spreadsheets&#39; API.<br/><br/>
+<br></p>
+
+<h2>Installation</h2>
+
+<p><br></p>
+
+<pre><code class="python">pip install gspread
+</code></pre>
+
+<p><br></p>
+
+<h2>Authorization</h2>
+
+<p><br><br/>
+Google Spreadsheet&#39;s API uses OAuth2 to handle authorization.  You&#39;ll need to generate an <a href="https://console.developers.google.com/">API Key</a>.  You can also use email/password to login with <code>gspread.login(email,password)</code>.<br/>
+<br></p>
+
+<pre><code class="python">  import gspread
+  import json
+
+  oauthfile = &#39;/path/to/file/your-api-key.json&#39;,                  
+  scope = [&#39;https://spreadsheets.google.com/feeds&#39;]
+  json_key = json.load(open(oauthfile))
+  credentials = SignedJwtAssertionCredentials(json_key[&#39;client_email&#39;], json_key[&#39;private_key&#39;], scope)
+
+  # Authorize
+  gspreadclient = gspread.authorize(credentials)
+</code></pre>
+
+<p><br><br/>
+<a href="#top">Back to top</a><br/>
+<br></p>
+
+<h2>Accessing Data</h2>
+
+<p><br></p>
+
+<pre><code class="python">  # Load spreadsheet
+  spreadsheet = gspreadclient.open(&#39;your spreadsheet&#39;)
+
+  # Load worksheet
+  worksheet = spreadsheet.worksheet(&#39;your worksheet&#39;)
+
+  # Get all values
+  dat = worksheet.get_all_values()
+</code></pre>
+
+<p><br><br/>
+The <code>gspread.Worksheet.get_all_values()</code> returns a list of lists which is easily converted to NumPy format or just indexing normally.  You can also get a specific row with <code>gspread.Worksheet.row_values()</code> and a specific cell with <code>gspread.Worksheet.cell()</code>.</p>
+
+<p><br><br/>
+<a href="#top">Back to top</a><br/>
+<br></p>
+
+<h2>Updating Cells</h2>
+
+<p><br></p>
+
+<pre><code class="python">  # Insert &#39;abc&#39; into the cell at the first row, first column.
+  worksheet.update_cell(1,1,&#39;abc&#39;)
+</code></pre>
+
+<p><br><br/>
+There are other functions to update the data, mainly <code>gspread.Worksheet.append_row()</code>.  You can also change the size of the worksheet with <code>gspread.Worksheet.add_rows()</code>,<code>gspread.Worksheet.add_cols()</code>, <code>gspread.Worksheet.resize()</code>.</p>
+
+<p><br><br/>
+<a href="#top">Back to top</a><br/>
+<br></p>
+
+<h2>More Resources</h2>
+
+<ul>
+<li><a href="https://gspread.readthedocs.org/en/latest/">Read the Docs</a></li>
+<li><a href="https://github.com/burnash/gspread">Package Source on Github</a></li>
+<li><a href="https://pypi.python.org/pypi/gspread">Package on PyPi</a></li>
+<li><a href="https://github.com/rweyant/bertplot/blob/master/python/tutorials/gspread/gspread.Rmd">Source as RMarkdown</a></li>
+</ul>
+
+<p><img src="data:image/png;base64,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" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+
+</body>
+
+</html>

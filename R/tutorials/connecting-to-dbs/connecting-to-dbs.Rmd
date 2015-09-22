@@ -8,8 +8,6 @@ title: "Connecting to Databases in R"
 source('/media/roberto/Main Storage/Documents/bertplot/R/source/common_rmd_options.R')
 ```
 
-# Connecting to an Oracle Database with RJDBC
-
 Connecting is fairly straight forward using RJDBC.  You need to get your driver, and then define the DSN.  THen you create a connection object and are good to go.
 
 ```{r, eval=FALSE}
