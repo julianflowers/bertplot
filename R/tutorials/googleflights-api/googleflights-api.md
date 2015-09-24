@@ -42,9 +42,9 @@ I'm working on adding functions that will make working with the returned data ea
 <a href="#top">Back to top</a>
 
 ## More Resources
-- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/googleflights-api/googleflights-api.Rmd)
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/)
 - [Package Source on Github](https://github.com/rweyant/googleflights)
 - [QPX Express API Documentation](https://developers.google.com/qpx-express/v1/)
 
 
-<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto auto auto 0;" />
+<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />

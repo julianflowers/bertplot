@@ -1,17 +1,18 @@
 ---
-title: "gspread: a tool to work with Google Spreadsheets in Python"
+title: "amazonproduct: a Python wrapper for Amazon Product's API"
 html_document:
     toc: true
 ---
 
-
+```{r setup, echo=FALSE, warning=FALSE,cache=FALSE,results='hide'}
+source('/media/roberto/Main Storage/Documents/bertplot/R/source/common_rmd_options.R')
+```
 <br>
 **gspread** offers a simple interface between Python and Google Spreadsheet's API.  
 <br>
 ## Installation
 <br>
-
-```python
+```{python, eval=FALSE,results='hide'}
 pip install gspread
 ```
 <br>
@@ -19,8 +20,7 @@ pip install gspread
 <br>
 Google Spreadsheet's API uses OAuth2 to handle authorization.  You'll need to generate an [API Key](https://console.developers.google.com/).  You can also use email/password to login with `gspread.login(email,password)`.
 <br>
-
-```python
+```{python, eval=FALSE}
   import gspread
   import json
   
@@ -38,8 +38,7 @@ Google Spreadsheet's API uses OAuth2 to handle authorization.  You'll need to ge
 
 ## Accessing Data
 <br>
-
-```python
+```{python, eval=FALSE}
   # Load spreadsheet
   spreadsheet = gspreadclient.open('your spreadsheet')
   
@@ -58,8 +57,7 @@ The `gspread.Worksheet.get_all_values()` returns a list of lists which is easily
 
 ## Updating Cells
 <br>
-
-```python
+```{python, eval=FALSE}
   # Insert 'abc' into the cell at the first row, first column.
   worksheet.update_cell(1,1,'abc')
 ```
@@ -76,4 +74,9 @@ There are other functions to update the data, mainly `gspread.Worksheet.append_r
 - [Package on PyPi](https://pypi.python.org/pypi/gspread)
 - [Source as RMarkdown](https://github.com/rweyant/bertplot/)
 
-<img src="figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+```{r, echo=FALSE,fig.height=1,fig.width=2,fig.align='center'}
+suppressWarnings(suppressPackageStartupMessages(library(png)))
+suppressPackageStartupMessages(library(grid))
+img <- readPNG('gspread.png')
+grid.raster(img)
+```

@@ -1,5 +1,5 @@
 ---
-title: "gspread: a tool to work with Google Spreadsheets in Python "
+title: "gspread: a tool to work with Google Spreadsheets in Python"
 html_document:
     toc: true
 ---
@@ -7,8 +7,8 @@ html_document:
 ```{r setup, echo=FALSE, warning=FALSE,cache=FALSE,results='hide'}
 source('/media/roberto/Main Storage/Documents/bertplot/R/source/common_rmd_options.R')
 ```
-
-**gspread** offers a simple interface between Python and Googl Spreadsheets' API.  
+<br>
+**gspread** offers a simple interface between Python and Google Spreadsheet's API.  
 <br>
 ## Installation
 <br>
@@ -72,7 +72,7 @@ There are other functions to update the data, mainly `gspread.Worksheet.append_r
 - [Read the Docs](https://gspread.readthedocs.org/en/latest/)
 - [Package Source on Github](https://github.com/burnash/gspread)
 - [Package on PyPi](https://pypi.python.org/pypi/gspread)
-- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/python/tutorials/gspread/gspread.Rmd)
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/)
 
 ```{r, echo=FALSE,fig.height=1,fig.width=2,fig.align='center'}
 suppressWarnings(suppressPackageStartupMessages(library(png)))
