@@ -6,8 +6,6 @@ title: "Connecting to Databases in R"
 
 
 
-# Connecting to an Oracle Database with RJDBC
-
 Connecting is fairly straight forward using RJDBC.  You need to get your driver, and then define the DSN.  THen you create a connection object and are good to go.
 
 
@@ -52,6 +50,6 @@ Now you're ready to send requests to a Teradata machine.
 <a href="#top">Back to top</a>
 
 # More Resources
-- [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/connecting-to-dbs/connecting-to-dbs.Rmd)
+- [Source as RMarkdown](https://github.com/rweyant/bertplot/)
 - [RJDBC on CRAN](https://cran.r-project.org/web/packages/RJDBC/index.html)
 - [Bommarito Blog post](http://bommaritollc.com/2012/11/connecting-r-to-an-oracle-database-with-rjdbc/?utm_source=rss&utm_medium=rss&utm_campaign=connecting-r-to-an-oracle-database-with-rjdbc)

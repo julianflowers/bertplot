@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Connecting to Teradata Database</title>
+<title>Installation</title>
 
 <script type="text/javascript">
 window.onload = function() {
@@ -201,61 +201,122 @@ hr {
 </head>
 
 <body>
-<div id="toc">
-<div id="toc_header">Table of Contents</div>
+<h2>Installation</h2>
+
+<pre><code class="r">devtools::install_github(&#39;rweyant/spotifyr&#39;)
+</code></pre>
+
+<h2>Authentication</h2>
+
+<p>For any usage below, you&#39;ll need to have proper credentials from Spotify.  Sign up for an account <a href="https://developer.spotify.com/">here</a> and <a href="https://developer.spotify.com/my-applications/#!/applications">create an app</a>.</p>
+
+<pre><code class="r"># First Step: make client_id and client_secret available to other function
+set_credentials(client_id=YOUR_CLIENT_ID,client_secret=YOUR_CLIENT_SECRET)
+</code></pre>
+
+<h3>Authenticate with <a href="https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow">Client Credentials</a></h3>
+
+<pre><code class="r">client_tokens &lt;- get_tokens()
+</code></pre>
+
+<h3>Authenticate with <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow">Authorization Code</a></h3>
+
+<pre><code class="r"># Opens Browser window asking for permission to access data
+# Requires Spotify account and for user to login
+user_code &lt;- get_user_code()
+
+# Assigns tokens for later use.
+# This creates a variable access_token in the Global Environment 
+# that all future functions will access.
+user_tokens &lt;- get_user_token(user_code)
+
+# If your access_token expires and you need to refresh your tokens 
+# With no parameters specified, looks for refresh_token in the Global Environment
+refresh_tokens &lt;- refresh_user_token()
+
+# If you want, you can explicitly specify the refresh token
+refresh_tokens &lt;- refresh_user_token(user_tokens$refresh_token)
+</code></pre>
+
+<h2>Basic Usage</h2>
+
+<h3>Search for Data</h3>
+
+<p>Get information, identifiers, images, etc. for artists, albums, songs or playlists that match the query text. <br/>
+No authentication is required for this function.</p>
+
+<pre><code class="r"># Search for an artist
+search(&#39;slayer&#39;,type=&#39;artist&#39;)
+
+# Get top search result
+search(&#39;slayer&#39;,type=&#39;artist&#39;,limit=1)
+
+# Search for an album
+search(&#39;Hell Awaits&#39;,type=&#39;album&#39;)
+</code></pre>
+
+<h3>Get Information About Artist</h3>
+
+<p>Search for an artist by Spotify ID and get information about band, genre, images, etc.<br/>
+No authentication is required for this function.</p>
+
+<pre><code class="r">get_artist(&#39;1IQ2e1buppatiN1bxUVkrk&#39;)
+
+# Get all albums by Slayer on Spotify
+get_artist_albums(&#39;1IQ2e1buppatiN1bxUVkrk&#39;)
+
+# Get top tracks of Slayer in the US. Country code required.
+get_artist_toptracks(&#39;1IQ2e1buppatiN1bxUVkrk&#39;,&#39;US&#39;)
+
+# Get related artists according to Spotify
+get_artist_relatedartists(&#39;1IQ2e1buppatiN1bxUVkrk&#39;)
+</code></pre>
+
+<h3>Access Library information</h3>
+
+<p>There are endpoints to access and modify data in user&#39;s library</p>
+
+<pre><code class="r"># Get the last 2 tracks saved by the user.
+get_saved_tracks(limit=2)
+</code></pre>
+
+<h3>Followers</h3>
+
+<p>Get information about what artists a user is following, add/remove followers from user, check if a user is following someone</p>
+
+<pre><code class="r"># Get list of all artists a user is following
+get_user_followed_artists()
+
+# Check if my account is being followed.
+following(&#39;rweyant&#39;,type=&#39;user&#39;)
+
+# Follow my account
+follow(&#39;rweyant&#39;,type=&#39;user&#39;)
+
+# Check if Slayer is being followed.  Use Spotify Artist ID
+following(&#39;1IQ2e1buppatiN1bxUVkrk&#39;,type=&#39;artist&#39;)
+
+# Follow Slayer
+follow(&#39;1IQ2e1buppatiN1bxUVkrk&#39;,type=&#39;artist&#39;)
+</code></pre>
+
+<h3>User Profile Data</h3>
+
+<pre><code class="r"># Specific user&#39;s data
+get_user_profile(&#39;rweyant&#39;)
+
+# Get the user who is using the application
+get_current_user_profile()
+</code></pre>
+
+<h3>More Resources</h3>
+
 <ul>
-<li>
-<a href="#toc_0">Connecting to Teradata Database</a>
-</li>
-<li>
-<a href="#toc_1">More Resources</a>
-</li>
+<li><a href="https://developer.spotify.com/web-api/endpoint-reference/">Spotify API Endpoints</a></li>
+<li><a href="https://github.com/rweyant/spotifyr">Source on GitHub</a></li>
 </ul>
-</div>
 
-
-<p>Connecting is fairly straight forward using RJDBC.  You need to get your driver, and then define the DSN.  THen you create a connection object and are good to go.</p>
-
-<pre><code class="r">library(RJDBC)
-drv &lt;- JDBC(&#39;oracle.jdbc.OracleDriver&#39;,&#39;/path/to/driver/ojdbc6.jar&#39;)
-connectionString &lt;- &quot;jdbc:oracle:thin:@//YOUR_DSN/&quot;
-connection &lt;- dbConnect(drv,connectionString,YOUR_USER_NAME,YOUR_PWD)
-</code></pre>
-
-<p>Now you can use all sorts of functions to send requests to the database.</p>
-
-<pre><code class="r">dbGetQuery(connection, &#39;select * from table&#39;)
-</code></pre>
-
-<p>When you&#39;re done, you can disconnect with <code>dbDisconnect</code> function</p>
-
-<pre><code class="r">dbDisconnect(connection)
-</code></pre>
-
-<p><a href="#top">Back to top</a></p>
-
-<h1 id="toc_0">Connecting to Teradata Database</h1>
-
-<p>This process is almost identical.  First, you need to change the driver. Then the connectionString format is slightly different.</p>
-
-<pre><code class="r">drv &lt;- JDBC(&#39;com.teradata.jdbc.TeraDriver&#39;)
-connectionString &lt;- &quot;jdbc:teradata::@//YOUR_DSN/database=YOUR_DATABASE&quot;
-connection &lt;- dbConnect(drv,connectionString,YOUR_USER_NAME,YOUR_PWD)
-</code></pre>
-
-<p>Now you&#39;re ready to send requests to a Teradata machine.</p>
-
-<p><img src="data:image/png;base64,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" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
-
-<p><a href="#top">Back to top</a></p>
-
-<h1 id="toc_1">More Resources</h1>
-
-<ul>
-<li><a href="https://github.com/rweyant/bertplot/">Source as RMarkdown</a></li>
-<li><a href="https://cran.r-project.org/web/packages/RJDBC/index.html">RJDBC on CRAN</a></li>
-<li><a href="http://bommaritollc.com/2012/11/connecting-r-to-an-oracle-database-with-rjdbc/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=connecting-r-to-an-oracle-database-with-rjdbc">Bommarito Blog post</a></li>
-</ul>
+<p><img src="data:image/png;base64,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" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
 
 </body>
 

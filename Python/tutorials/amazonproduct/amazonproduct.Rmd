@@ -77,6 +77,6 @@ There are other functions to update the data, mainly `gspread.Worksheet.append_r
 ```{r, echo=FALSE,fig.height=1,fig.width=2,fig.align='center'}
 suppressWarnings(suppressPackageStartupMessages(library(png)))
 suppressPackageStartupMessages(library(grid))
-img <- readPNG('gspread.png')
+img <- readPNG('')
 grid.raster(img)
 ```

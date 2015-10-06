@@ -71,27 +71,37 @@ head(get_artist_albums(2683))
 ```
 
 ```
-  album_id                           album_mbid             album_name
-1 20501709 3b5df951-81a4-4090-890c-9ec4e45f9625 ’Til Death Do Us Part…
-2 19608760 b0af1e98-b37b-46bb-8601-539b64483809     B-Sides & Rarities
-3 15718965                                 <NA>        Christ Illusion
-4 10666567 24a80dbb-a639-48e5-80be-9fbf07d4f2bd        Christ Illusion
-5 14234192 d49815dc-4140-4408-a9f3-af3b80bce152        Christ Illusion
-6 13855350 67bac511-0e6a-4110-9296-8401986fba4f        Christ Illusion
-  album_track_count album_release_date album_release_type album_rating
-1                19               2006              Album           10
-2                21               2013              Album           43
-3                10         2012-10-16              Album           19
-4                10         2006-08-08              Album           65
-5                14         2007-07-24              Album           65
-6                10         2009-06-26              Album           65
+  album_id                           album_mbid
+1 20501709 3b5df951-81a4-4090-890c-9ec4e45f9625
+2 19608760 b0af1e98-b37b-46bb-8601-539b64483809
+3 15718965                                 <NA>
+4 10666567 24a80dbb-a639-48e5-80be-9fbf07d4f2bd
+5 14234192 d49815dc-4140-4408-a9f3-af3b80bce152
+6 13855350 67bac511-0e6a-4110-9296-8401986fba4f
+              album_name album_track_count
+1 ’Til Death Do Us Part…                19
+2     B-Sides & Rarities                21
+3        Christ Illusion                10
+4        Christ Illusion                10
+5        Christ Illusion                14
+6        Christ Illusion                10
+  album_release_date album_release_type album_rating
+1               2006              Album           10
+2               2013              Album           42
+3         2012-10-16              Album           19
+4         2006-08-08              Album           65
+5         2007-07-24              Album           65
+6         2009-06-26              Album           65
 ```
+
+## Next Steps
 
 Currently supports all methods for the musixmatch API (e.g. track.lyrics.get, album.tracks.get, artist.related..get).  Not all methods have a `simplify` option yet, but these options are being actively developed.  Check the [GitHub](https://github.com/rweyant/musixmatch) for updates.
 
 
+<br>
 
-## More Resources
+#### More Resources
 - [Source as RMarkdown](https://github.com/rweyant/bertplot/blob/master/R/tutorials/musixmatch-api-post/musixmatch-api-post.Rmd)
 - [Package Source on Github](https://github.com/rweyant/musixmatch)
 - [Musixmatch API Documentation](https://developer.musixmatch.com/documentation)
