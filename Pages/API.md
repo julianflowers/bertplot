@@ -5,6 +5,9 @@ output: html_document
 
 These are projects I'm working on to create wrappers to online services and resources.  
 
+## [Spotify](https://github.com/rweyant/spotifyr)
+An **R** wrapper for [Spotify's](https://www.spotify.com/) API. Spotify is one of the most popular online music streaming services.  Their API has endpoints that allow you to get information about artists, albums, tracks, as well as users and playlists.  It also allows you to interact with users, but saving tracks to their library and change the users and artists that they are following.
+
 ## [musixmatch](https://github.com/rweyant/musixmatch)
 An **R** wrapper for [musixmatch's](https://www.musixmatch.com/) API. Musixmatch offers a catalog for song lyrics and other information about songs, albums and artists.  You can use their API to gather data about what albums an artist has released, to what songs are on each album, to what an artist's webpage and Twitter handle are.  The API wrapper supports all methods to the API and offers basic simplification to some functions
 
