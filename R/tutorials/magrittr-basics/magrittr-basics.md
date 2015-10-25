@@ -5,6 +5,10 @@ output:
     toc: true
 ---
 
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
+
+The [magrittr](https://github.com/smbache/magrittr) package offers a new operator that can help improve readability of your code, and make it easier to update and modify data wrangling code.  The %>% operator has been adopted into `dplyr` and many of [Hadley Wickham's](https://github.com/hadley) packages are written to be pipe-friendly.
+
 # The Problem
 
 ### R code can get hard to read
@@ -49,8 +53,8 @@ df %>% head(1)  # same as using head(df,1)
 ```
 
 ```
-##           x1         x2      x3
-## 1 0.06294249 -0.1570624 2.21768
+         x1       x2        x3
+1 0.7025331 1.436246 0.1966722
 ```
 
 ```r
@@ -58,8 +62,8 @@ df %>% head(.,1)  # same as using head(df,1)
 ```
 
 ```
-##           x1         x2      x3
-## 1 0.06294249 -0.1570624 2.21768
+         x1       x2        x3
+1 0.7025331 1.436246 0.1966722
 ```
 
 ### Slightly more complicated example
@@ -74,7 +78,7 @@ mtcars %>%
   geom_point()
 ```
 
-<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
 
 
 
@@ -120,8 +124,8 @@ sapply(iris[iris$Sepal.Length < mean(iris$Sepal.Length),-5],FUN = mean)
 ```
 
 ```
-## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-##      5.19875      3.13375      2.46250      0.66375
+Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+     5.19875      3.13375      2.46250      0.66375 
 ```
 
 ```r
@@ -133,8 +137,8 @@ iris %>%
 ```
 
 ```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width
-## 1      5.19875     3.13375       2.4625     0.66375
+  Sepal.Length Sepal.Width Petal.Length Petal.Width
+1      5.19875     3.13375       2.4625     0.66375
 ```
 
 <a href="#top">Back to top</a>
@@ -150,10 +154,10 @@ table(CO2$Treatment,CO2$Type)
 ```
 
 ```
-##             
-##              Quebec Mississippi
-##   nonchilled     21          21
-##   chilled        21          21
+            
+             Quebec Mississippi
+  nonchilled     21          21
+  chilled        21          21
 ```
 
 ```r
@@ -162,10 +166,10 @@ CO2 %$% table(Treatment,Type)
 ```
 
 ```
-##             Type
-## Treatment    Quebec Mississippi
-##   nonchilled     21          21
-##   chilled        21          21
+            Type
+Treatment    Quebec Mississippi
+  nonchilled     21          21
+  chilled        21          21
 ```
 
 <a href="#top">Back to top</a>
@@ -184,11 +188,11 @@ plot %>%  # Make scatterplot and keep going
 colMeans
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+<img src="figure/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" />
 
 ```
-##  Sepal.Width Sepal.Length 
-##        3.099        5.471
+ Sepal.Width Sepal.Length 
+       3.099        5.471 
 ```
 
 <a href="#top">Back to top</a>
@@ -207,12 +211,12 @@ df
 ```
 
 ```
-##        col1
-## 1 0.5922743
-## 2 1.3762161
-## 3 4.3349630
-## 4 1.5131369
-## 5 4.1046156
+         col1
+1  1.18026364
+2  1.42993361
+3  0.03972387
+4  0.30055069
+5 13.35940310
 ```
 
 ```r
@@ -221,12 +225,12 @@ df
 ```
 
 ```
-##        col1
-## 1 0.5922743
-## 2 1.3762161
-## 3 1.5131369
-## 4 4.1046156
-## 5 4.3349630
+         col1
+1  0.03972387
+2  0.30055069
+3  1.18026364
+4  1.42993361
+5 13.35940310
 ```
 
 <a href="#top">Back to top</a>

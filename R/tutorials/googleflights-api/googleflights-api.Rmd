@@ -8,7 +8,7 @@ html_document:
 source('/media/roberto/Main Storage/Documents/bertplot/R/source/common_rmd_options.R')
 ```
 
-QPX Express API offers global airline pricing in a single, standard API.  You can search it and get data on flight prices across lots of different carriers.
+I'm working on an R package that facilitates getting data out of the [QPX Express API](https://developers.google.com/qpx-express/) and into R.  QPX Express API offers global airline pricing in a single, standard API.  You can search it and get data on flight prices across lots of different carriers.
 
 ## Installation
 <br>
@@ -36,7 +36,7 @@ The API returns data in JSON format.  The `search` function will parse it with `
 
 ## Next Steps
 <br>
-I'm working on adding functions that will make working with the returned data easier.
+The actual API only has one method, so there's not much else to say about working with it.  The data is very rich though, but hard to use directly from JSON.  My main focus moving forward here is to add functions that will make working with the returned data easier.
 
 <a href="#top">Back to top</a>
 

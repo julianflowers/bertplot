@@ -46,14 +46,17 @@ postToBlog.dev('/media/roberto/Main Storage/Documents/bertplot/R/tutorials/magri
                tags=c('R','magrittr','pipes','%>%'),
                syntax.highlighter = blog.highlighter,
                type='CreateOrReplace',
-               publish=TRUE)
+               publish=TRUE,
+               toc=FALSE)
 
 postToBlog.dev('/media/roberto/Main Storage/Documents/bertplot/R/tutorials/ggplot-statemaps/ggplot-statemaps.Rmd',
                categories=c('R'),
                tags=c('R','Visualization','ggplot2'),
                syntax.highlighter = blog.highlighter,
                type='CreateOrReplace',
-               publish=TRUE)
+               publish=TRUE,
+               toc=FALSE,
+               createTweet = FALSE,useURLShortener = FALSE)
 
 postToBlog.dev('/media/roberto/Main Storage/Documents/bertplot/R/tutorials/connecting-to-dbs/connecting-to-dbs.Rmd',
                categories=c('R','Databases'),
@@ -61,6 +64,7 @@ postToBlog.dev('/media/roberto/Main Storage/Documents/bertplot/R/tutorials/conne
                syntax.highlighter = blog.highlighter,
                type='CreateOrReplace',
                publish=TRUE,
+               toc=FALSE,
                createTweet = FALSE,useURLShortener = FALSE)
 
 postToBlog.dev('/media/roberto/Main Storage/Documents/bertplot/R/tutorials/musixmatch-api-post/musixmatch-api-post.Rmd',
@@ -98,8 +102,8 @@ postToBlog.dev('/media/roberto/Main Storage/Documents/bertplot/R/tutorials/spoti
                type='CreateOrReplace',
                toc = FALSE,
                publish=TRUE,
-               createTweet = TRUE,
-               useURLShortener = TRUE)
+               createTweet = FALSE,
+               useURLShortener = FALSE)
 
 
 

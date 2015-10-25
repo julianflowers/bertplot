@@ -201,7 +201,15 @@ hr {
 </head>
 
 <body>
+<p>I&#39;ve created an R wrapper for Spotify&#39;s API.  It is currently still in testing, development.  It was developed on Ubuntu, but I&#39;ve had successful tests on Windows 7 too. </p>
+
+<p>It currently launches <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> through <a href="https://github.com/ropensci/RSelenium">RSelenium</a> for the full <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow">authorization code flow</a>.  Chrome and IE will eventually be supported, but are not yet.  All data from endpoints is converted to lists.  If you just want access to the public endpoints, this is not necessary.  </p>
+
+<p>Some of the objects (artists, albums, playlists) have helper functions to convert to <code>data.frame</code>, but not all yet, and this is the next major development plan.</p>
+
 <h2>Installation</h2>
+
+<p>Requires <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> for initial authentication for any of the endpoints that operate on user data.</p>
 
 <pre><code class="r">devtools::install_github(&#39;rweyant/spotifyr&#39;)
 </code></pre>
@@ -252,7 +260,7 @@ search(&#39;slayer&#39;,type=&#39;artist&#39;)
 search(&#39;slayer&#39;,type=&#39;artist&#39;,limit=1)
 
 # Search for an album
-search(&#39;Hell Awaits&#39;,type=&#39;album&#39;)
+search(&#39;South Of Heaven&#39;,type=&#39;album&#39;)
 </code></pre>
 
 <h3>Get Information About Artist</h3>
@@ -268,8 +276,11 @@ get_artist_albums(&#39;1IQ2e1buppatiN1bxUVkrk&#39;)
 # Get top tracks of Slayer in the US. Country code required.
 get_artist_toptracks(&#39;1IQ2e1buppatiN1bxUVkrk&#39;,&#39;US&#39;)
 
-# Get related artists according to Spotify
+# Get related artists according to Spotify in list 
 get_artist_relatedartists(&#39;1IQ2e1buppatiN1bxUVkrk&#39;)
+
+# Get related artists according to Spotify and simplify to a data.frame
+simplify_result(get_artist_relatedartists(&#39;1IQ2e1buppatiN1bxUVkrk&#39;),type=&#39;artists&#39;)
 </code></pre>
 
 <h3>Access Library information</h3>

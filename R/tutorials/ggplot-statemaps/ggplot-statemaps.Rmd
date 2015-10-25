@@ -8,6 +8,15 @@ html_document:
 source('../../source/common_rmd_options.R')
 ```
 
+
+```{r, echo=FALSE,fig.height=5,fig.width=6,fig.align='center'}
+suppressWarnings(suppressPackageStartupMessages(library(png)))
+suppressPackageStartupMessages(library(grid))
+img <- readPNG('thumbnail.png')
+grid.raster(img)
+```
+
+
 # Basic Syntax
 
 ```{r}

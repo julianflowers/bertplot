@@ -5,13 +5,18 @@ html_document:
 ---
 
 
+```
+## Error: Line starting 'QPX Express Flight S ...' is malformed!
+```
 <br>
-**gspread** offers a simple interface between Python and Google Spreadsheet's API.  
+[**gspread**](https://github.com/burnash/gspread) is a package by [Anton Burnashev](https://github.com/burnash) offers a simple interface between Python and Google Spreadsheet's API.  
+
 <br>
 ## Installation
 <br>
 
 ```python
+# From PyPi
 pip install gspread
 ```
 <br>

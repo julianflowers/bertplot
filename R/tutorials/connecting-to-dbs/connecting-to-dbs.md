@@ -6,7 +6,7 @@ title: "Connecting to Databases in R"
 
 
 
-Connecting is fairly straight forward using RJDBC.  You need to get your driver, and then define the DSN.  THen you create a connection object and are good to go.
+There are many ways to connect to a database in R, the one I prefer is to use the [RJDBC](https://github.com/s-u/RJDBC) package, because it's fairly straight forward and simple to use RJDBC.  You need to get your driver, and then define the DSN.  Then you create a connection object and are good to go.
 
 
 ```r
@@ -23,7 +23,7 @@ Now you can use all sorts of functions to send requests to the database.
 dbGetQuery(connection, 'select * from table')
 ```
 
-When you're done, you can disconnect with `dbDisconnect` function
+When you're done, you can and *should* disconnect with `dbDisconnect` function.
 
 
 ```r

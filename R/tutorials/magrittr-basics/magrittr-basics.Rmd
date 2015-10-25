@@ -5,6 +5,15 @@ output:
     toc: true
 ---
 
+```{r, echo=FALSE,fig.height=4,fig.width=6,fig.align='center'}
+suppressWarnings(suppressPackageStartupMessages(library(png)))
+suppressPackageStartupMessages(library(grid))
+img <- readPNG('magrittr.png')
+grid.raster(img)
+```
+
+The [magrittr](https://github.com/smbache/magrittr) package offers a new operator that can help improve readability of your code, and make it easier to update and modify data wrangling code.  The %>% operator has been adopted into `dplyr` and many of [Hadley Wickham's](https://github.com/hadley) packages are written to be pipe-friendly.
+
 # The Problem
 
 ### R code can get hard to read

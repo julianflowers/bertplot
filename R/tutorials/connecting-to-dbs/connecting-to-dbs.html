@@ -201,20 +201,7 @@ hr {
 </head>
 
 <body>
-<div id="toc">
-<div id="toc_header">Table of Contents</div>
-<ul>
-<li>
-<a href="#toc_0">Connecting to Teradata Database</a>
-</li>
-<li>
-<a href="#toc_1">More Resources</a>
-</li>
-</ul>
-</div>
-
-
-<p>Connecting is fairly straight forward using RJDBC.  You need to get your driver, and then define the DSN.  THen you create a connection object and are good to go.</p>
+<p>There are many ways to connect to a database in R, the one I prefer is to use the <a href="https://github.com/s-u/RJDBC">RJDBC</a> package, because it&#39;s fairly straight forward and simple to use RJDBC.  You need to get your driver, and then define the DSN.  Then you create a connection object and are good to go.</p>
 
 <pre><code class="r">library(RJDBC)
 drv &lt;- JDBC(&#39;oracle.jdbc.OracleDriver&#39;,&#39;/path/to/driver/ojdbc6.jar&#39;)
@@ -227,14 +214,14 @@ connection &lt;- dbConnect(drv,connectionString,YOUR_USER_NAME,YOUR_PWD)
 <pre><code class="r">dbGetQuery(connection, &#39;select * from table&#39;)
 </code></pre>
 
-<p>When you&#39;re done, you can disconnect with <code>dbDisconnect</code> function</p>
+<p>When you&#39;re done, you can and <em>should</em> disconnect with <code>dbDisconnect</code> function.</p>
 
 <pre><code class="r">dbDisconnect(connection)
 </code></pre>
 
 <p><a href="#top">Back to top</a></p>
 
-<h1 id="toc_0">Connecting to Teradata Database</h1>
+<h1>Connecting to Teradata Database</h1>
 
 <p>This process is almost identical.  First, you need to change the driver. Then the connectionString format is slightly different.</p>
 
@@ -249,7 +236,7 @@ connection &lt;- dbConnect(drv,connectionString,YOUR_USER_NAME,YOUR_PWD)
 
 <p><a href="#top">Back to top</a></p>
 
-<h1 id="toc_1">More Resources</h1>
+<h1>More Resources</h1>
 
 <ul>
 <li><a href="https://github.com/rweyant/bertplot/">Source as RMarkdown</a></li>

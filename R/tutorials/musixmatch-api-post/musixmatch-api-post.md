@@ -9,7 +9,7 @@ title: "Musixmatch API Wrapper in R"
 
 <img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto auto auto 0;" />
 
-Musixmatch is a website that has lots of data on musicians, their album, songs and lyrics.  They've created an API, which anyone can use to collect data, such as lyrics, genres, album and track metadata, and much more.  The goal of this API wrapper is to facilitate using the API in R, and collecting data in a convenient fashion
+[Musixmatch](https://www.musixmatch.com/) is a website that has lots of data on musicians, their album, songs and lyrics.  They've created an API, which anyone can use to collect data, such as lyrics, genres, album and track metadata, and much more.  The goal of this API wrapper is to facilitate using the API in R, and collecting data in a convenient fashion
 
 ## Installation
 
@@ -38,7 +38,7 @@ Here you can find basic information about artists that match the search term.  I
 
 ```r
 # Return list of full XML result in a list
-result <- search_artist(artist = 'slayer',simplify=FALSE)
+result <- search_artist(q_artist = 'slayer',simplify=FALSE)
 ```
 
 Otherwise, a simplified `data.frame` is returned.
@@ -72,26 +72,26 @@ head(get_artist_albums(2683))
 
 ```
   album_id                           album_mbid
-1 20501709 3b5df951-81a4-4090-890c-9ec4e45f9625
-2 19608760 b0af1e98-b37b-46bb-8601-539b64483809
-3 15718965                                 <NA>
-4 10666567 24a80dbb-a639-48e5-80be-9fbf07d4f2bd
-5 14234192 d49815dc-4140-4408-a9f3-af3b80bce152
-6 13855350 67bac511-0e6a-4110-9296-8401986fba4f
-              album_name album_track_count
-1 ’Til Death Do Us Part…                19
-2     B-Sides & Rarities                21
-3        Christ Illusion                10
-4        Christ Illusion                10
-5        Christ Illusion                14
-6        Christ Illusion                10
+1 10351455 4f4bca2a-b1d4-42fb-a01c-304c8fc389c8
+2 20819255                                 <NA>
+3 10284682 95b6de70-dcc8-48cd-a3bd-91bf1fc0e1c7
+4 10326081 a776e81e-c00f-4176-ab39-51c508b2a2ac
+5 10367988 1c233932-faeb-48a7-96a5-a79871522e40
+6 10564777 965f651c-4f51-421b-b402-3a537a9035b7
+                             album_name album_track_count
+1 Seasons in the Abyss / Reign in Blood                20
+2                            Repentless                12
+3                      God Hates Us All                26
+4                      God Hates Us All                15
+5                      God Hates Us All                14
+6                      God Hates Us All                15
   album_release_date album_release_type album_rating
-1               2006              Album           10
-2               2013              Album           42
-3         2012-10-16              Album           19
-4         2006-08-08              Album           65
-5         2007-07-24              Album           65
-6         2009-06-26              Album           65
+1               1998              Album           87
+2         2015-09-11              Album           76
+3         2001-08-17              Album           74
+4               2001              Album           74
+5               <NA>              Album           74
+6         2001-09-11              Album           74
 ```
 
 ## Next Steps
